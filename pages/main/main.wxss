@@ -1,0 +1,23 @@
+/* 头部  */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.hint {
+  font-size: 28rpx;
+  padding: 0rpx 20rpx;
+}
+
+.left_btn {
+
+}
+.right_btn {
+
+}
+
+/* 滑动组件的样式 */
+.swiper_box {
+  min-height: 830rpx;
+}

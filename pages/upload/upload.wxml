@@ -1,0 +1,81 @@
+<!--pages/edit/edit.wxml-->
+<header
+  goBackTxt = "离开"
+  goFinishTxt = "完成"
+  hasGoBackFn = 'true'
+  bind:goBackFn = "goBack"
+  bind:goFinishFn = "gofinish"
+></header>
+<view class='describe_box'>
+  <form>
+    <input
+      placeholder='请赋予这段时光一个温暖的名字吧~'
+      class='title_input'
+      bindblur='addTitle'
+      bindinput='changeTitle'
+      focus="{{titlefocus}}"
+    ></input>
+    <textarea
+      wx:if="{{showDetailInp}}"
+      placeholder="关于这段时光我想说....."
+      maxlength="200"
+      bindinput='changeDescription'
+    ></textarea>
+  </form>
+</view>
+
+<view class='album_box'>
+  <!-- 第一行的结构 -->
+  <view class="album_line_box">
+    <block wx:for="{{albumListLine1}}" wx:key="{{index}}">
+      <view class='image_box'>
+        <image class='image' wx:if="{{!item.last && item.src}}" src='{{item.src}}'></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{item.last && !item.src}}"></image>
+        <text class='blank' wx:else></text>
+      </view>
+    </block>
+  </view>
+  <!-- 第二行的结构 -->
+  <view class="album_line_box" wx:if="{{albumListLine2[0].src || albumListLine2[0].last}}">
+    <block wx:for="{{albumListLine2}}" wx:key="{{index}}">
+      <view class='image_box'>
+        <image class='image' wx:if="{{!item.last && item.src}}" src='{{item.src}}'></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{item.last && !item.src}}"></image>
+        <text class='blank' wx:else></text>
+      </view>
+    </block>
+  </view>
+  <!-- 第三行的结构 -->
+  <view class="album_line_box" wx:if="{{albumListLine3[0].src || albumListLine3[0].last}}">
+    <block wx:for="{{albumListLine3}}" wx:key="{{index}}">
+      <view class='image_box'>
+        <image class='image' wx:if="{{!item.last && item.src}}" src='{{item.src}}'></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{item.last && !item.src}}"></image>
+        <text class='blank' wx:else></text>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- 已选日期 -->
+<view class='selectedDate'>
+  <view>开始日期：{{startDate}}</view>
+  <view>结束日期：{{endDate}}</view>
+</view>
+
+<!-- 定位 -->
+<view class='location_box' catch:tap='goLocate'>
+  <view class='location_wrap'>
+    <i-icon class='location_icon' type="coordinates" size='26' />
+    <text class="location_txt {{ formData.currentLoc ? '' : 'noloc' }}" >{{formData.currentLoc || '所在位置'}}</text>
+  </view>
+  <i-icon class='enter_icon' type="enter" size='26' />
+</view>
+
+<i-toast id="toast" />
+
+<i-modal visible="{{ showGoBack }}" bind:ok="confirmGoBack" bind:cancel="cancelGoBack">
+    <view>是否确定要退出当前编辑呢？</view>
+</i-modal>
+
+<i-spin size="large" fix wx:if="{{showCalLoading}}"></i-spin>

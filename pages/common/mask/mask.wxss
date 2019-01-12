@@ -1,0 +1,33 @@
+/* pages/common/mask/mask.wxss */
+.common_mask {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.tip {
+  color: #e9d0ac;
+  min-width: 60%;
+  max-width: 70%;
+  word-break: break-all;
+}
+
+.tip_center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+/* 指向右上角相机的箭头样式 */
+.right_top_arrow {
+  position: absolute;
+  height: 280rpx;
+  width: 460rpx;
+  top: 60rpx;
+  right: 90rpx;
+  background-size: 100%;
+}

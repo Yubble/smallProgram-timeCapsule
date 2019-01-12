@@ -1,0 +1,123 @@
+<!--pages/edit/edit.wxml-->
+<view>
+  <header
+    hasGoBackFn = "true"
+    goBackTxt = "{{headerLBtn}}"
+    bind:goBackFn = "goBackOrCancel"
+    goFinishTxt = "{{headerRBtn}}"
+    bind:goFinishFn = "editOrFinish"
+  ></header>
+  <view class='shown_plane' wx:if="{{!editting}}">
+    <view class='description_box'>
+      <view class='portrait'>
+        <image src='{{selfPhoto}}'></image>
+      </view>
+      <view class='basicInfo'>
+        <view class='basic_title'>{{actTitle}}</view>
+        <view class='basic_date'>{{startDate}}~{{endDate}}</view>
+        <view class='basic_location'>
+          <i-icon class='location_icon' type="coordinates" size='26' />
+          <text>{{actLocation}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='detail_describe'>
+      <text>{{actDescribe}}</text>
+    </view>
+  </view>
+  <view class='edit_plane' wx:else>
+    <view class='input_box'>
+      <input
+        class='actTitle'
+        value='{{actTitleCopy}}'
+        bindinput='inputTitle'
+      ></input>
+      <textarea
+        class='actDescribe'
+        value='{{actDescribeCopy}}'
+        maxlength="200"
+        bindinput='inputDescribe'
+      ></textarea>
+    </view>
+  </view>
+  <view class='exhibit_album'>
+    <!-- 1 -->
+    <view class='album_box'>
+      <view class='first_bigPic editable'>
+        <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[0]}}" data-imgid="1" wx:if="{{editting}}">
+          <icon type='clear' size='{{iconSize}}'></icon>
+        </view>
+        <image wx:if="{{imgSrcList[0]}}" src="{{imgSrcList[0]}}"></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{!imgSrcList[1] && !imgSrcList[0] && editting}}"></image>
+      </view>
+      <!-- 2/3 -->
+      <view class='vertical_twoPic'>
+        <view class='twoPic_one editable'>
+          <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[1]}}" data-imgid="2" wx:if="{{editting && imgSrcList[1]}}">
+            <icon type='clear' size='{{iconSize}}'></icon>
+          </view>
+          <image wx:if="{{imgSrcList[1]}}" src="{{imgSrcList[1]}}" ></image>
+          <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{imgSrcList[0] && !imgSrcList[1] && editting}}"></image>
+        </view>
+        <view class='twoPic_two editable'>
+          <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[2]}}" data-imgid="3" wx:if="{{editting && imgSrcList[2]}}">
+            <icon type='clear' size='{{iconSize}}'></icon>
+          </view>
+          <image wx:if="{{imgSrcList[2]}}" src="{{imgSrcList[2]}}"></image>
+          <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{!imgSrcList[2] && imgSrcList[1] && editting}}"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 4/5/6 -->
+    <view class='vertical_threePic'>
+      <view class='threePic_one editable'>
+        <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[3]}}" data-imgid="4" wx:if="{{editting && imgSrcList[3]}}">
+          <icon type='clear' size='{{iconSize}}'></icon>
+        </view>
+        <image wx:if="{{imgSrcList[3]}}" src="{{imgSrcList[3]}}"></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{imgSrcList[2] && !imgSrcList[3] && editting}}"></image>
+      </view>
+      <view class='threePic_two editable'>
+        <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[4]}}" data-imgid="5" wx:if="{{editting && imgSrcList[4]}}">
+          <icon type='clear' size='{{iconSize}}'></icon>
+        </view>
+        <image wx:if="{{imgSrcList[4]}}" src="{{imgSrcList[4]}}"></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{!imgSrcList[4] && imgSrcList[3] && editting}}"></image>
+      </view>
+      <view class='threePic_three editable'>
+        <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[5]}}" data-imgid="6" wx:if="{{editting && imgSrcList[5]}}">
+          <icon type='clear' size='{{iconSize}}'></icon>
+        </view>
+        <image wx:if="{{imgSrcList[5]}}" src="{{imgSrcList[5]}}"></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{imgSrcList[4] && !imgSrcList[5] && editting}}"></image>
+      </view>
+    </view>
+    <!-- 7/8/9 -->
+    <view class='vertical_threePic'>
+      <view class='threePic_one editable'>
+        <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[6]}}" data-imgid="7" wx:if="{{editting && imgSrcList[6]}}">
+          <icon type='clear' size='{{iconSize}}'></icon>
+        </view>
+        <image wx:if="{{imgSrcList[6]}}" src="{{imgSrcList[6]}}"></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{!imgSrcList[6] && imgSrcList[5] && editting}}"></image>
+      </view>
+      <view class='threePic_two editable'>
+        <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[7]}}" data-imgid="8" wx:if="{{editting && imgSrcList[7]}}">
+          <icon type='clear' size='{{iconSize}}'></icon>
+        </view>
+        <image wx:if="{{imgSrcList[7]}}" src="{{imgSrcList[7]}}"></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{imgSrcList[6] && !imgSrcList[7] && editting}}"></image>
+      </view>
+      <view class='threePic_three editable'>
+        <view class='icon_delete' catch:tap="delImgs" data-imgsrc="{{imgSrcList[8]}}" data-imgid="9" wx:if="{{editting && imgSrcList[8]}}">
+          <icon type='clear' size='{{iconSize}}'></icon>
+        </view>
+        <image wx:if="{{imgSrcList[8]}}" src="{{imgSrcList[8]}}"></image>
+        <image class='addImg' catch:tap="addImgFn" src='/pages/static/images/addImg.png' wx:elif="{{!imgSrcList[8] && editting && imgSrcList[7]}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<i-toast id="toast" />
+<i-spin size="large" fix wx:if="{{showCalLoading}}"></i-spin>

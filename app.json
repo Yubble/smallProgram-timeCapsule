@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/edit/edit",
+    "pages/upload/upload"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

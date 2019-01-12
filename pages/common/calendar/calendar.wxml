@@ -1,0 +1,19 @@
+<!--pages/common/calendar/calendar.wxml-->
+<view class='box1' style='width: {{ sysW * 7 }}px' >
+  <view class='dateBox'>{{ year }} - {{ month }}</view>
+  <block wx:for='{{ weekArr }}' wx:key="this">
+    <view style='width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'>{{ item }}</view>
+  </block>
+  
+  <block wx:for='{{ arr }}' wx:for-index="date_idx" wx:for-item="date_item" wx:key="date_idx">
+    
+    <view
+      catch:tap='selDate'
+      data-id='{{ date_item.date }}'
+      data-arr='{{ date_item }}'
+      style='{{ date_idx == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'
+      class='{{ date_item.startDate ? "startDay" : "" }} {{ date_item.endDate ? "endDay" : "" }} {{ date_item.processDate ? "processDay" : "" }} {{ date_item.sameDate ? "sameDay" : "" }} {{ date_item.date == getDate && month == currentMonth ? "dateOn" : "" }} {{ date_item.startEvent ? "startEvent" : "" }} {{ date_item.hasEvent ? "processEvent" : "" }} {{ date_item.endEvent ? "endEvent" : "" }} {{ date_item.sameEvent ? "sameEvent" : ""}}'
+    >{{ date_item.date }}</view>
+
+  </block>
+</view>

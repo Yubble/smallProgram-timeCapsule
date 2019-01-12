@@ -1,0 +1,75 @@
+/* pages/common/calendar/calendar.wxss */
+.box1 .dateBox{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 40rpx;
+}
+
+.box1{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.box1>view{
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 34rpx;
+}
+
+.dateOn{
+  border-radius: 50%;
+  background-color: hotpink;
+  color: #fff;
+}
+
+.startDay{
+  border-radius: 50% 0 0 50%;
+  background-color: rgb(114, 94, 231);
+  color: #fff;
+}
+
+.startEvent{
+  border-radius: 50% 0 0 50%;
+  background-color: #d06291;
+  color: #fff;
+}
+
+.processDay{
+  background-color: rgb(114, 94, 231);
+  color: #fff;
+  border-radius:0%;
+}
+
+.processEvent{
+  background-color: #d06291;
+  color: #fff;
+  border-radius:0%;
+}
+
+.endDay{
+  border-radius: 0 50% 50% 0;
+  background-color: rgb(114, 94, 231);
+  color: #fff;
+}
+
+.endEvent{
+  border-radius: 0 50% 50% 0;
+  background-color: #d06291;
+  color: #fff;
+}
+
+.sameDay{
+  border-radius: 50%;
+  background-color: rgb(114, 94, 231);
+  color: #fff;
+}
+
+.sameEvent{
+  border-radius: 50%;
+  background-color: #d06291;
+  color: #fff;
+}

@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "header": "../common/header/header",
+    "i-icon": "../../lib/weApp_UI/icon/index",
+    "i-toast": "../../lib/weApp_UI/toast/index",
+    "i-spin": "../../lib/weApp_UI/spin/index"
+  }
+}

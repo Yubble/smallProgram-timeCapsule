@@ -1,0 +1,5 @@
+<!--pages/common/mask/mask.wxml-->
+<view class="common_mask">
+  <image class='right_top_arrow' src="/pages/static/images/mask_arrow.png" wx:if='{{photoArrow}}'></image>
+  <text wx:if="tips" class="{{tipsPos}} tip">{{tips}}</text>
+</view>

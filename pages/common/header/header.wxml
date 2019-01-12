@@ -1,0 +1,5 @@
+<!--pages/common/header/header.wxml-->
+<view class='header'>
+  <text class='header_back' catch:tap="goBack_self">{{goBackTxt}}</text>
+  <text class='header_finish' catch:tap="goFinish_self">{{goFinishTxt}}</text>
+</view>

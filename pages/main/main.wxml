@@ -1,0 +1,35 @@
+<header class="header">
+  <navigator class='left_btn'>{{'< ' + selDateTitle.year + '/' + selDateTitle.month + '/' + selDateTitle.date}}</navigator>
+  <i-icon class='right_btn' type="camera_fill" size='28' catch:tap='addRecode'/>
+</header>
+
+<view class='hint'>
+  <text class='hint_txt'>36500天中平凡而美好的一天~\n快来记录这份美好吧~</text>
+</view>
+
+<swiper class='swiper_box' current='{{currentSwiper}}' vertical='true' bindanimationfinish='swiperMonthFn' bindchange='swiperChangeFn' duration='{{durationTime}}'>
+  <block>
+    <swiper-item>
+      <calendar id="previousCal" select-year="{{selDatePreviousYear}}" select-month="{{selDatePreviousMonth}}" select-date="{{selDatePreviousDate}}"></calendar>
+      <i-spin size="large" fix wx:if="{{showCalLoading}}"></i-spin>
+    </swiper-item>
+    <swiper-item>
+      <calendar id="currentCal" bind:bindchange="bindchange" bind:clearAllSelectData="clearAllSelectData" select-year="{{selDateCurrentYear}}" select-month="{{selDateCurrentMonth}}" select-date="{{selDateCurrentDate}}"></calendar>
+      <i-spin size="large" fix wx:if="{{showCalLoading}}"></i-spin>
+    </swiper-item>
+    <swiper-item>
+      <calendar id="nextCal" select-year="{{selDateNextYear}}" select-month="{{selDateNextMonth}}" select-date="{{selDateNextDate}}"></calendar>
+      <i-spin size="large" fix wx:if="{{showCalLoading}}"></i-spin>
+    </swiper-item>
+  </block>
+</swiper>
+
+<mask catch:tap="hideMask1" wx:if="{{tips1.show}}" tips="{{tips1.txt}}" tipsPos="{{tips1.pos}}"></mask>
+<mask catch:tap="hideMask2" wx:if="{{tips2.show}}" tips="{{tips2.txt}}" tipsPos="{{tips2.pos}}"></mask>
+<mask catch:tap="hideMask3" wx:if="{{tips3.show}}" tips="{{tips3.txt}}" tipsPos="{{tips3.pos}}"></mask>
+<mask catch:tap="hideMask4" wx:if="{{tips4.show}}" tips="{{tips4.txt}}" tipsPos="{{tips4.pos}}" photoArrow="true"></mask>
+
+<i-toast id="toast" />
+
+<!-- 灭绝一切的Loading -->
+<i-spin size="large" fix wx:if="{{wholeLoading}}"></i-spin>

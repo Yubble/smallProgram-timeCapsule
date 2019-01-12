@@ -1,0 +1,19 @@
+/* pages/common/header/header.wxss */
+/* 头部 */
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f8b672;
+  height: 100rpx;
+}
+
+.header .header_back,.header .header_finish {
+  width: 40%;
+}
+.header_back {
+  text-align: left;
+}
+.header_finish {
+  text-align: right;
+}
