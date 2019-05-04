@@ -90,11 +90,14 @@ Page({
   },
   // 初始化页面时间
   initPageDate() {
+    let year = app.globalData.selectDate.split('/')[0]
+    let month = app.globalData.selectDate.split('/')[1]
+    let date = app.globalData.selectDate.split('/')[2]
     // 初始左上角时间
     this.setData({
-      'selDateTitle.year': app.globalData.selectDate.split('/')[0],
-      'selDateTitle.month': app.globalData.selectDate.split('/')[1],
-      'selDateTitle.date': app.globalData.selectDate.split('/')[2]
+      'selDateTitle.year': year,
+      'selDateTitle.month': month,
+      'selDateTitle.date': date
     })
   },
   // 点击右上角相机触发的回调函数
@@ -373,13 +376,12 @@ Page({
     }
   },
   swiperMonthFn(e) {
-    // console.log('触发动画结束')
     const turnPage = e.detail.current;
     if (this.data.turnPagePre == turnPage) {
       // 如果滑动页面幅度小月份没变，则不做任何操作
       return
     } else {
-      // 拉取当月和上月下月的信息
+      // 拉取当月和上月下月的记录信息
       this.getThreeMonth()
 
       this.setData({
@@ -445,7 +447,7 @@ Page({
   fetchMonthEvent(year, month) {
     return new Promise((res, rej) => {
       wx.request({
-        url: 'http://www.timecapsule.com/media/getDateEvent',
+        url: `${app.globalData.baseUrl}/media/getDateEvent`,
         data: {
           period: year + '-' + month
         },

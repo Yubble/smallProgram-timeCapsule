@@ -4,7 +4,7 @@
   <block wx:for='{{ weekArr }}' wx:key="this">
     <view style='width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'>{{ item }}</view>
   </block>
-  
+
   <block wx:for='{{ arr }}' wx:for-index="date_idx" wx:for-item="date_item" wx:key="date_idx">
     
     <view

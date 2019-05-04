@@ -13,6 +13,8 @@
 	"appid": "wx85cdf179af7ae8fd",
 	"projectname": "timer",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

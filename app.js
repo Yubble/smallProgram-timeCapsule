@@ -1,4 +1,6 @@
 //app.js
+import { dateFormate } from './utils/dateFormate.js'
+
 App({
   onLaunch: function () {
     let that = this
@@ -30,7 +32,7 @@ App({
         }
         if (res.code) {
           wx.request({
-            url: 'http://www.timecapsule.com/onLogin',
+            url: `${this.globalData.baseUrl}/onLogin`,
             data: {
               code: res.code
             },
@@ -46,7 +48,7 @@ App({
                       that.globalData.userInfo = Object.assign({}, that.globalData.userInfo, { openid: resData.openid, session_key: resData.session_key })
                       // 在此将所有用户信息存入数据库
                       wx.request({
-                        url: 'http://www.timecapsule.com/users/getUserInfo',
+                        url: `${that.globalData.baseUrl}/users/getUserInfo`,
                         data: {
                           userInfo: that.globalData.userInfo
                         },
@@ -245,10 +247,11 @@ App({
     // })
   },
   globalData: {
+    baseUrl: 'https://www.ronnieo.wang',
+    // baseUrl: 'http://www.timecapsule.com', // 本地域名
     userInfo: null,
     currentDate: new Date().toLocaleDateString(),
-    // selectDate: '2018/09/21',
-    selectDate: '2018/09/21',
+    selectDate: dateFormate(new Date().toLocaleDateString()).formateSlash,
     // 用来记录展示出的三个月
     selDateCurrent: {
       year: '',

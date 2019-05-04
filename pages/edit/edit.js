@@ -127,7 +127,7 @@ Component({
       let deletedImgsList = []
       if (this.data.deletedImgs.length) {
         deletedImgsList = this.data.deletedImgs.map(imgPath => {
-          return imgPath.replace('http://www.timecapsule.com/imgstore/', '')
+          return imgPath.replace(`${app.globalData.baseUrl}/imgstore/`, '')
         })
       }
       deletedImgsList = JSON.stringify(deletedImgsList)
@@ -141,7 +141,7 @@ Component({
       if (_this.data.previewUploadImgs.length) {
         // 如果有新加照片则走照片上传
         app.uploadimg({
-          url: 'http://www.timecapsule.com/media/supplyHappy',
+          url: `${app.globalData.baseUrl}/media/supplyHappy`,
           path: _this.data.previewUploadImgs,
           formData,
           fn(result) {
@@ -163,7 +163,7 @@ Component({
       } else {
         // 如果只是删除图片则调用图片删除
         wx.request({
-          url: 'http://www.timecapsule.com/media/updateDelImgs',
+          url: `${app.globalData.baseUrl}/media/updateDelImgs`,
           data: {
             formData
           },
@@ -203,7 +203,7 @@ Component({
     getEventDetail() {
       let _this = this
       wx.request({
-        url: 'http://www.timecapsule.com/media/getHappy',
+        url: `${app.globalData.baseUrl}/media/getHappy`,
         data: {
           'eventId': _this.data.eventId
         },
@@ -230,7 +230,7 @@ Component({
       })
     },
     deployImgs (imgs) {
-      const imgHost = 'http://www.timecapsule.com/imgstore/'
+      const imgHost = `${app.globalData.baseUrl}/imgstore/`
       let imgSrcList = []
       for (let i in imgs) {
         imgSrcList[i] = imgHost + imgs[i]

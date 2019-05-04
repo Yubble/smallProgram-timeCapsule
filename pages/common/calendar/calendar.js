@@ -1,7 +1,9 @@
 // pages/common/calendar/calendar.js
 import { computed, watch } from '../../../utils/assist.js'
 import { copyobj } from '../../../utils/util.js'
+import { dateFormate } from '../../../utils/dateFormate.js'
 let app = getApp()
+
 Component({
   /**
    * 组件的属性列表
@@ -37,7 +39,6 @@ Component({
       value: app.globalData.currentDate.date,
       observer(newObj, oldObj) {
         if (newObj != oldObj) {
-          // console.log('改变了日期')
           this.setData({
             'selectDate': newObj
           })
@@ -82,8 +83,9 @@ Component({
       //获取现今月份
       this.setData({month})
 
+      // console.log(app.globalData.currentDate.date)
       //获取今日日期
-      this.setData({getDate: date})
+      this.setData({ getDate: dateFormate(app.globalData.currentDate).date})
 
       //最后一天是几号
       var d = new Date(year, month, 0);

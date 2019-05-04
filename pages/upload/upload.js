@@ -219,7 +219,7 @@ Page({
       let _this = this
       // 开始上传
       app.uploadimg({
-        url: 'http://www.timecapsule.com/media/saveHappy',
+        url: `${app.globalData.baseUrl}/media/saveHappy`,
         path: imgsSet,
         formData: this.data.formData,
         fn(result) {
