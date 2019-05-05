@@ -160,7 +160,7 @@ Page({
         })
       },
       fail () {
-        this.showToastTxt('定位失败了')
+        _this.showToastTxt('定位失败了')
       }
     })
   },
